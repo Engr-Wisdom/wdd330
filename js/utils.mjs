@@ -6,12 +6,12 @@ export function qs(selector, parent = document) {
 // export const qs = (selector, parent = document) => parent.querySelector(selector);
 
 // retrieve data from localstorage
-export function getLocalStorage(key) {
-  return JSON.parse(localStorage.getItem(key));
+export function getLocalStorage() {
+  return JSON.parse(localStorage.getItem("so-cart")) || [];
 }
 // save data to local storage
-export function setLocalStorage(key, data) {
-  localStorage.setItem(key, JSON.stringify(data));
+export function setLocalStorage(items) {
+  localStorage.setItem("so-cart", JSON.stringify(items));
 }
 // set a listener for both touchend and click
 export function setClick(selector, callback) {
