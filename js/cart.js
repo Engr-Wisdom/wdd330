@@ -1,7 +1,7 @@
 import { getLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart") || [];
+  const cartItems = getLocalStorage();
   cartItems.forEach(item => cartItemTemplate(item))
   console.log(cartItems)
 }
