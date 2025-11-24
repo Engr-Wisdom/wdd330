@@ -1,40 +1,114 @@
-import { setLocalStorage, getLocalStorage } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage } from "./utils.mjs"
 
 export default class ProductDetails {
+  constructor(productId, dataSource) {
+    this.productId = productId;
+    this.dataSource = dataSource;
+    this.product = {}
+  }
 
-    constructor(dataSource, productId) {
-        this.dataSource = dataSource;
-        this.productId = productId;
-        this.product = {}
-    }
+  async init() {
+    this.product = await this.dataSource.findProductById(this.productId);
 
-    async init() {
-        this.product = await this.dataSource.findProductById(this.productId)
+    document.querySelector("main").innerHTML = this.renderProductDetails()
 
-        this.renderProductDetails()
+    document.getElementById("addToCart").addEventListener("click", this.addProductToCart.bind(this))
+  }
 
-        document.getElementById("addToCart")
-            .addEventListener("click", this.addProductToCart.bind(this))
-    }
+  addProductToCart() {
+    const cartItems = getLocalStorage();
+    cartItems.unshift(this.product)
+    setLocalStorage(cartItems)
+  }
 
-    renderProductDetails() {
-        const container = document.querySelector(".product-detail")
-        container.innerHTML = `            
-            <h2 class="divider">${this.product.Name}</h2>
-            <img class="divider" src="${this.product.Image}" alt="${this.product.Name}">
-            <p class="product-card__price">${this.product.FinalPrice}</p>
-            <p class="product__color">${this.product.Colors[0].ColorName}</p>
-            <p class="product__description">${this.product.DescriptionHtmlSimple}</p>
-            <div class="product-detail__add">
-                <button id="addToCart" data-id="880RR">Add to Cart</button>
-            </div>
-        `
-    }
-
-    addProductToCart() {
-        const cartItems = getLocalStorage();
-        cartItems.unshift(this.product);
-        setLocalStorage(cartItems)
-        alert(`${this.product.Name} added to cart`)
-    }
+  renderProductDetails() {
+    return `<section class="product-detail">
+      <h2>${this.product.Brand.Name}</h2>
+      <h3 class="divider">${this.product.NameWithoutBrand}</h3>
+      <img src="${this.product.Image}"alt="${this.product.Name}" id="productImage" class="divider">
+      <p id="productPrice" class="product-card__price">${this.product.FinalPrice}</p>
+      <p id="productColor" class="product__color">${this.product.Colors[0].ColorName}</p>
+      <p id="productDesc" class="product__description">${this.product.DescriptionHtmlSimple}</p>
+      <div class="product-detail__add">
+        <button id="addToCart" data-id="productId">Add to Cart</button>
+      </div>
+    </section>`
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+// import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+
+// export default class ProductDetails {
+
+//   constructor(productId, dataSource) {
+//     this.productId = productId;
+//     this.product = {};
+//     this.dataSource = dataSource;
+//   }
+
+//   async init() {
+//     // use the datasource to get the details for the current product. findProductById will return a promise! use await or .then() to process it
+//     this.product = await this.dataSource.findProductById(this.productId);
+//     // the product details are needed before rendering the HTML
+//     this.renderProductDetails();
+//     // once the HTML is rendered, add a listener to the Add to Cart button
+//     // Notice the .bind(this). This callback will not work if the bind(this) is missing. Review the readings from this week on "this" to understand why.
+//     document
+//       .getElementById("addToCart")
+//       .addEventListener("click", this.addProductToCart.bind(this));
+//   }
+
+//   addProductToCart() {
+//     const cartItems = getLocalStorage("so-cart") || [];
+//     cartItems.push(this.product);
+//     setLocalStorage("so-cart", cartItems);
+//   }
+
+//   renderProductDetails() {
+//     productDetailsTemplate(this.product);
+//   }
+// }
+
+// function productDetailsTemplate(product) {
+//   document.querySelector("h2").textContent = product.Brand.Name;
+//   document.querySelector("h3").textContent = product.NameWithoutBrand;
+
+//   const productImage = document.getElementById("productImage");
+//   productImage.src = product.Image;
+//   productImage.alt = product.NameWithoutBrand;
+
+//   document.getElementById("productPrice").textContent = product.FinalPrice;
+//   document.getElementById("productColor").textContent = product.Colors[0].ColorName;
+//   document.getElementById("productDesc").innerHTML = product.DescriptionHtmlSimple;
+
+//   document.getElementById("addToCart").dataset.id = product.Id;
+// }
+
+// ************* Alternative Display Product Details Method *******************
+// function productDetailsTemplate(product) {
+//   return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
+//     <h2 class="divider">${product.NameWithoutBrand}</h2>
+//     <img
+//       class="divider"
+//       src="${product.Image}"
+//       alt="${product.NameWithoutBrand}"
+//     />
+//     <p class="product-card__price">$${product.FinalPrice}</p>
+//     <p class="product__color">${product.Colors[0].ColorName}</p>
+//     <p class="product__description">
+//     ${product.DescriptionHtmlSimple}
+//     </p>
+//     <div class="product-detail__add">
+//       <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
+//     </div></section>`;
+// }
