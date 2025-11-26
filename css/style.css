@@ -114,6 +114,39 @@ button {
   border-bottom: 2px solid var(--primary-color);
 }
 
+.search-container {
+  position: relative;
+}
+
+#search {
+  width: 500px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  outline: none;
+}
+
+#suggestion {
+  border: 1px solid gray;
+  position: absolute;
+  width: 100%;
+  top: 45px;
+  z-index: 100;
+  background-color: white;
+  border-radius: 5px;
+  display: none;
+}
+
+#suggestion li {
+  list-style: none;
+  cursor: pointer;
+  padding: 10px
+}
+
+#suggestion li:hover {
+  background-color: rgb(240, 238, 238);
+}
+
 /* End utility classes */
 
 /* Cart icon styles */
@@ -131,6 +164,13 @@ button {
   fill: gray;
 }
 
+#cartCount {
+  position: absolute;
+  right: -20px;
+  top: -2px;
+  color: red;
+  font-weight: bold;
+}
 /* End cart icon styles */
 
 .mission {
@@ -201,6 +241,22 @@ button {
 
 .product-detail img {
   width: 100%;
+}
+
+#addTxt {
+  background-color: rgb(19, 187, 19);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  position: fixed;
+  top: -10%;
+  left: 45%;
+  transition: 0.3s ease;
+}
+
+#addTxt.show {
+  top: 10px;
 }
 
 /* Start cart list card styles */
