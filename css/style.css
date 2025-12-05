@@ -164,7 +164,7 @@ button {
   fill: gray;
 }
 
-#cartCount {
+.cart-count {
   position: absolute;
   right: -20px;
   top: -2px;
@@ -296,6 +296,73 @@ button {
   grid-row: 2;
   grid-column: 3;
 }
+
+form {
+  display: inline-block;
+  width: 500px;
+  border: 2px solid var(--primary-color);
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+fieldset {
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+label {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid gray;
+  outline: none;
+}
+
+#checkOutBtn {
+  background-color: #bb4806;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 40px;
+  font-size: 15px;
+  margin: 0;
+}
+
+#checkOutBtn:hover {
+  background-color: #f05e09;
+}
+
+.order-summary {
+  display: inline-block;
+  width: 300px;
+  border: 2px solid var(--primary-color);
+  border-radius: 5px;
+}
+
+.order-summary p {
+  font-size: 15px;
+}
+
+.alert {
+  background-color: #f8d7da; /* light red */
+  color: #721c24; /* dark red text */
+  border: 1px solid #f5c6cb;
+  padding: 0 20px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 
 @media screen and (min-width: 500px) {
   body {

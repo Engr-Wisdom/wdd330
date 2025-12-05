@@ -1,0 +1,66 @@
+.backdrop {
+  width: 100%;
+  height: 350px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid gray;
+}
+
+.backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(60%);
+}
+
+.details-content {
+  padding: 20px 50px;
+  display: flex;
+  gap: 50px;
+  margin-top: -70px;
+}
+
+.poster img {
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.7);
+  width: 300px;
+}
+
+.info h1 {
+  margin-bottom: 10px;
+  font-size: 40px;
+}
+
+.meta {
+  opacity: 0.8;
+}
+
+.meta .dot {
+  margin: 0 10px;
+}
+
+.overview {
+  margin: 20px 0;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.watchlist-btn {
+  background-color: #ff4757;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.watchlist-btn:hover {
+  background-color: #f86e7a;
+}
+
+.watchlist-btn:active {
+  background-color: #ff4757;
+}

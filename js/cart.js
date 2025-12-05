@@ -1,11 +1,13 @@
-import { loadHeaderFooter, getLocalStorage } from "./utils.mjs";
+import { loadHeaderFooter, getLocalStorage, updateCartCount } from "./utils.mjs";
 
-loadHeaderFooter()
-
-localStorage.clear()
+async function init() {
+  await loadHeaderFooter()
+  updateCartCount()
+  renderCartContents()
+}
 
 function renderCartContents() {
-  const cartItems = getLocalStorage();
+  const cartItems = getLocalStorage("so-cart");
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
@@ -29,4 +31,4 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
-renderCartContents();
+init()

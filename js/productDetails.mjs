@@ -1,6 +1,4 @@
-import { loadHeaderFooter, setLocalStorage, getLocalStorage } from "./utils.mjs"
-
-loadHeaderFooter()
+import { loadHeaderFooter, setLocalStorage, getLocalStorage, updateCartCount } from "./utils.mjs";
 
 export default class ProductDetails {
   constructor(productId, dataSource) {
@@ -10,7 +8,11 @@ export default class ProductDetails {
   }
 
   async init() {
+    await loadHeaderFooter()
+    
     this.product = await this.dataSource.findProductById(this.productId);
+
+    updateCartCount()
 
     document.querySelector("main").innerHTML = this.renderProductDetails()
 
@@ -18,9 +20,10 @@ export default class ProductDetails {
   }
 
   addProductToCart() {
-    const cartItems = getLocalStorage();
-    cartItems.unshift(this.product)
-    setLocalStorage(cartItems)
+    const cartItems = getLocalStorage("so-cart");
+    cartItems.unshift(this.product)    
+    setLocalStorage("so-cart", cartItems)  
+    updateCartCount()  
 
     const addTxt = document.getElementById("addTxt");
     addTxt.classList.add("show")
@@ -39,7 +42,7 @@ export default class ProductDetails {
       <p id="productColor" class="product__color">${this.product.Colors[0].ColorName}</p>
       <p id="productDesc" class="product__description">${this.product.DescriptionHtmlSimple}</p>
       <div class="product-detail__add">
-        <button id="addToCart" data-id="productId">Add to Cart</button>
+        <button id="addToCart" data-id="${this.productId}">Add to Cart</button>
         <p id="addTxt">Added To Cart</p>
       </div>
     </section>`

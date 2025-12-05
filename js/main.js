@@ -1,49 +1,22 @@
-// import { loadHeaderFooter } from "./utils.mjs"
-// import ProductData from "./ProductData.mjs";
-// import ProductList from "./ProductList.mjs"
-
-// loadHeaderFooter()
-
-// const listElement = document.querySelector(".product-list");
-// const dataSource = new ProductData("tents");
-// const productList = new ProductList("tents", dataSource, listElement);
-// productList.init()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import { loadHeaderFooter } from "./utils.mjs";
-import ProductData from "./ProductData.mjs";
+import { loadHeaderFooter, updateCartCount } from "./utils.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import ProductList from "./ProductList.mjs";
 
 async function init() {
-    // Load header and footer first
     await loadHeaderFooter();
 
-    // Now header exists → now you can select the search elements
+    updateCartCount()
+
     const searchInput = document.getElementById("search");
     const suggestion = document.getElementById("suggestion");
 
-    // Product list
     const listElement = document.querySelector(".product-list");
-    const dataSource = new ProductData("tents");
+    const dataSource = new ExternalServices("tents");
     const productList = new ProductList("tents", dataSource, listElement);
     productList.init();
 
-    // Load products once
     const products = await dataSource.getData();
 
-    // Search input listener
     searchInput.addEventListener("input", () => {
         const query = searchInput.value.toLowerCase().trim();
 
