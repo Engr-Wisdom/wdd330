@@ -7,46 +7,43 @@ function detailsTemplate(movieDetail) {
 
     detailsContainer.innerHTML = `
         <div class="backdrop">
-          <img src="" alt="" />
+          <img src="https://image.tmdb.org/t/p/w200/${movieDetail.backdrop_path}" alt="" />
         </div>
 
         <div class="details-content">
           <div class="poster">
-            <img src="images/wisdom.jpg" alt="" />
+            <img src="https://image.tmdb.org/t/p/w200/${movieDetail.poster_path}" alt="${movieDetail.title}" />
           </div>
 
           <div class="info">
-            <h1>Movie Title</h1>
+            <h1>${movieDetail.title}</h1>
 
             <div class="meta">
-              <span id="releaseDate">2024</span>
+              <span id="releaseDate">${movieDetail.release_date}</span>
               <span class="dot">•</span>
-              <span id="rating">8.5/10</span>
+              <span id="rating">${movieDetail.vote_average}/10</span>
               <span class="dot">•</span>
-              <span id="runtime">144 mins</span>
+              <span id="runtime">${movieDetail.runtime} mins</span>
             </div>
 
             <div class="genres"></div>
 
-            <p class="overview">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed
-              perspiciatis, voluptate, ipsam incidunt accusamus architecto
-              quidem porro neque optio, qui cum! Corrupti tempore eaque aliquid
-              dolorem, enim sint nam quaerat?
-            </p>
+            <p class="overview">${movieDetail.overview}</p>
 
             <button class="watchlist-btn">
               <i class="far fa-bookmark"></i> Add to Watchlist
             </button>
           </div>
         </div>
-    `
-
-    document.querySelector("watchlist-btn").addEventListener("click", () => {
-        console.log("Clicked")
-    })
+    `;
 
     return detailsContainer
+}
+
+function addToCart(movie) {
+  let carts = getLocalStorage()
+  carts.unshift(movie)
+  setLocalStorage(carts)
 }
 
 async function fetchMovieDetail() {
@@ -62,10 +59,13 @@ async function fetchMovieDetail() {
         }
 
         const movieDetail = await response.json()
-        console.log(movieDetail)
         
         detailsTemplate(movieDetail)
 
+        const watchlistBtn = document.querySelector(".watchlist-btn")
+        watchlistBtn.addEventListener("click", () => {
+          addToCart(movieDetail)
+        })
 
     } catch(error) {
         console.error(error)

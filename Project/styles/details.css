@@ -3,7 +3,7 @@
   height: 350px;
   position: relative;
   overflow: hidden;
-  border: 1px solid gray;
+  position: relative;
 }
 
 .backdrop img {
@@ -18,17 +18,19 @@
   display: flex;
   gap: 50px;
   margin-top: -70px;
+  position: absolute;
 }
 
 .poster img {
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.7);
   width: 300px;
+  height: 250px;
 }
 
 .info h1 {
   margin-bottom: 10px;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .meta {

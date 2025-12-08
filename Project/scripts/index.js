@@ -34,7 +34,7 @@ async function fetchMovieData() {
                 window.location.href = `./details.html?id=${value.id}`
             })
 
-            movieList.append(figure)
+            movieList.appendChild(figure)
         })
 
     } catch(error) {

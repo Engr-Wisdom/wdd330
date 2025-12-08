@@ -22,9 +22,12 @@ export async function loadHeaderSideBarFooter() {
     sideBar.innerHTML = await loadTemplate("../public/sidebar.html")
     footer.innerHTML = await loadTemplate("../public/footer.html");
 
-    const logoContainer = document.querySelector(".logo-container");
-    logoContainer.addEventListener("click", () => {
+    document.querySelector(".logo-container").addEventListener("click", () => {
         window.location.href = "./index.html"
+    })
+
+    document.querySelector(".watchlist").addEventListener("click", () => {
+        window.location.href = "./watchlist.html"
     })
 
     const theme = document.getElementById("theme");
@@ -51,6 +54,6 @@ export function setLocalStorage(values) {
     return localStorage.setItem("watchlist", JSON.stringify(values))
 }
 
-export function getLocalStorage(key) {
-    return localStorage.getItem(key) || [];
+export function getLocalStorage() {
+    return JSON.parse(localStorage.getItem("watchlist")) || [];
 }
