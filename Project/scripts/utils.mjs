@@ -18,9 +18,9 @@ export async function loadHeaderSideBarFooter() {
     const footer = document.querySelector("footer");
     const sideBar = document.querySelector(".side-bar")
 
-    header.innerHTML = await loadTemplate("/wdd300/public/header.html");
-    sideBar.innerHTML = await loadTemplate("/wdd330/public/sidebar.html")
-    footer.innerHTML = await loadTemplate("/wdd330/public/footer.html");
+    header.innerHTML = await loadTemplate("/header.html");
+    sideBar.innerHTML = await loadTemplate("/sidebar.html")
+    footer.innerHTML = await loadTemplate("/footer.html");
 
     document.querySelector(".logo-container").addEventListener("click", () => {
         window.location.href = "./index.html"
