@@ -1,6 +1,4 @@
-import { loadHeaderSideBarFooter, getLocalStorage } from "./utils.mjs"
-
-loadHeaderSideBarFooter()
+import { getLocalStorage } from "./utils.mjs";
 
 function renderWatchlist() {
     let movies = getLocalStorage()

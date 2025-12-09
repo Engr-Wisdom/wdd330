@@ -1,6 +1,4 @@
-import { getLocalStorage, loadHeaderSideBarFooter, setLocalStorage } from "./utils.mjs";
-
-loadHeaderSideBarFooter()
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 function detailsTemplate(movieDetail) {
     const detailsContainer = document.querySelector(".details-container")
