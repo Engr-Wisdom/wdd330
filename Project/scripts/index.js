@@ -1,3 +1,7 @@
+import { bindHeader } from "./utils.mjs"
+
+bindHeader()
+
 async function fetchMovieData() {
     const key = "8987da0569b33f4d5d7b4977bca61c9e"
     const url = `https://api.themoviedb.org/3/movie/popular?api_key=${key}`;

@@ -1,4 +1,6 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { bindHeader, getLocalStorage, setLocalStorage } from "./utils.mjs";
+
+bindHeader()
 
 function detailsTemplate(movieDetail) {
     const detailsContainer = document.querySelector(".details-container")

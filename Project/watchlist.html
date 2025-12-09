@@ -10,9 +10,34 @@
     <link rel="stylesheet" href="./styles/watchlist.css">
   </head>
   <body>
-    <header></header>
+    <header>
+      <div class="logo-container">
+        <img src="./images/logo.png" alt="Logo" class="logo-icon" />
+        <h1 class="logo">FlickList</h1>
+      </div>
 
-    <section class="side-bar"></section>
+      <div>
+        <input type="text" placeholder="Search movies/TV Shows" id="searchInput">
+        <ul class="suggestion"></ul>
+      </div>
+
+      <div>
+        <button class="watchlist"><i class="far fa-bookmark"></i> Watchlist</button>
+
+        <select name="theme" id="theme">
+          <option value="Dark">🌙 Dark</option>
+          <option value="Light">☀️ Light</option>
+          <option value="custom">custom</option>
+        </select>
+      </div>
+    </header>
+
+    <section class="side-bar">
+      <div><i class="fa-solid fa-house"></i></div>
+      <div><i class="fa-solid fa-fire"></i> </div> 
+      <div><i class="far fa-bookmark"></i></div>
+      <div><i class="fa-solid fa-users"></i></div>
+    </section>
 
     <main>
         <div class="watchlist-container">

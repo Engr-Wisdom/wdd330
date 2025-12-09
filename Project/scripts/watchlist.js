@@ -1,4 +1,6 @@
-import { getLocalStorage } from "./utils.mjs";
+import { bindHeader, getLocalStorage } from "./utils.mjs";
+
+bindHeader()
 
 function renderWatchlist() {
     let movies = getLocalStorage()
