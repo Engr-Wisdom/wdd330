@@ -89,18 +89,6 @@ export function alertMessage(message, scroll = true) {
   
 }
 
-
-// export function updateCartCount() {
-//   const cartItems = getLocalStorage("so-cart");
-//   const countElements = document.querySelector(".cart-count");
-  
-//   if (cartItems.length > 0) {
-//     countElements.textContent = cartItems.length
-//   } else {
-//     countElements.textContent = 0;
-//   }
-// }
-
 export function updateCartCount() {
   const cartItems = getLocalStorage("so-cart") || [];
   const countElements = document.querySelectorAll('.cart-count');
@@ -118,4 +106,9 @@ export function updateCartCount() {
   document.dispatchEvent(new CustomEvent('cartUpdated', {
     detail: { count: cartItems.length }
   }));
+}
+
+export function removeAllAlerts() {
+  const alerts = document.querySelectorAll(".alert");
+  alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
 }
