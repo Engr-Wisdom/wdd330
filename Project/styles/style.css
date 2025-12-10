@@ -42,6 +42,8 @@ header div {
 .logo-container {
   cursor: pointer;
   transition: 0.3s ease;
+  display: flex;
+  gap: 10px;
 }
 
 .logo-icon {
@@ -107,9 +109,14 @@ main {
   margin-top: 60px;
 }
 
-.feature-content {
-  height: 50vh;
+.hero {
+  height: 60vh;
   background-color: tomato;
+}
+
+.hero img {
+  width: 100%;
+  height: inherit;
 }
 
 .movie-container {
@@ -124,21 +131,42 @@ main {
 }
 
 figure {
-  background-color: rgb(71, 71, 71);
   color: var(--accent1);
   text-align: center;
   border-radius: 5px;
-  overflow: hidden;
   cursor: pointer;
   transition: 0.3s ease;
 }
 
 figure img {
   width: 100%;
+  border-radius: 5px;
 }
 
 figure figcaption {
   padding: 5px;
   font-size: 12px;
   font-weight: bold;
+}
+
+footer {
+  background-color: rgb(32, 32, 32);
+  padding: 50px;
+  margin-left: 70px;
+  display: flex;
+  justify-content: space-between;
+}
+
+footer h1 {
+  font-size: larger;
+}
+
+footer ul {
+  margin-top: 20px;
+}
+
+li {
+  margin-top: 10px;
+  font-size: small;
+  list-style: none;
 }

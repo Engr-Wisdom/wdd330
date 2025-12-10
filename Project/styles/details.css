@@ -66,3 +66,20 @@
 .watchlist-btn:active {
   background-color: #ff4757;
 }
+
+.add-txt {
+  font-size: small;
+  color: #62cc62;
+  opacity: 0;
+  transform: translateY(-2px);
+  transition: 1s ease;
+}
+
+.add-txt.show {
+  opacity: 1;
+  transform: translateY(10px)
+}
+
+footer {
+  margin-top: 250px;
+}

@@ -33,7 +33,8 @@ function detailsTemplate(movieDetail) {
             <button class="watchlist-btn">
               <i class="far fa-bookmark"></i> Add to Watchlist
             </button>
-          </div>
+            <p class="add-txt"><i class="fa-solid fa-check"></i> Added to watchlist</p>
+          </div>  
         </div>
     `;
 
@@ -65,6 +66,11 @@ async function fetchMovieDetail() {
         const watchlistBtn = document.querySelector(".watchlist-btn")
         watchlistBtn.addEventListener("click", () => {
           addToCart(movieDetail)
+          const addTxt = document.querySelector(".add-txt");
+          addTxt.classList.add("show")
+          setTimeout(() => {
+            addTxt.classList.remove("show")
+          }, 5000)
         })
 
     } catch(error) {
