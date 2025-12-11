@@ -87,10 +87,11 @@ header div {
 .suggestion li {
   display: flex;
   align-items: center;
+  height: 70px;
+  padding: 0 20px;
   gap: 20px;
-  height: 85px;
-  padding: 10px;
   cursor: pointer;
+  margin: auto;
 }
 
 .suggestion li:hover {
@@ -98,7 +99,8 @@ header div {
 }
 
 .suggestion li img {
-  height: 80px;
+  height: 60px;
+  border-radius: 3px;
 }
 
 .watchlist {

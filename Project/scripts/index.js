@@ -63,6 +63,10 @@ searchInput.addEventListener("input", async (e) => {
             <p>${value.title}</p>
         `;
 
+        li.addEventListener("click", () => {
+            window.location.href = `./details.html?id=${value.id}`
+        })
+
         suggestion.append(li)
     })
 })
