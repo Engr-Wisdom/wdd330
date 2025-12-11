@@ -85,6 +85,20 @@ header div {
   transition: 0.3s ease;
 }
 
+.suggestion::-webkit-scrollbar {
+  width: 8px
+}
+
+.suggestion::-webkit-scrollbar-track {
+  background-color: #919090;
+  border-radius: 5px;
+}
+
+.suggestion::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 5px;
+}
+
 .suggestion li {
   display: flex;
   align-items: center;
