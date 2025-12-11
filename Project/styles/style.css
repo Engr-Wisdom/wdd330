@@ -82,6 +82,7 @@ header div {
   padding: 10px 0;
   position: absolute;
   top: 50px; 
+  transition: 0.3s ease;
 }
 
 .suggestion li {

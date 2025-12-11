@@ -1,8 +1,10 @@
-import { bindHeader } from "./utils.mjs"
+import { bindHeader, searchFunction } from "./utils.mjs"
 
 const key = "8987da0569b33f4d5d7b4977bca61c9e"
 
 bindHeader()
+
+searchFunction(key)
 
 async function fetchMovieData() {
     const url = `https://api.themoviedb.org/3/movie/popular?api_key=${key}`;
@@ -32,7 +34,7 @@ async function fetchMovieData() {
             // }
 
             figure.addEventListener("click", () => {
-                window.location.href = `./details.html?id=${value.id}`
+                window.location.href = `./detail.html?id=${value.id}`
             })
 
             movieList.appendChild(figure)
@@ -44,29 +46,3 @@ async function fetchMovieData() {
 }
 
 fetchMovieData()
-
-const searchInput = document.getElementById("searchInput");
-searchInput.addEventListener("input", async (e) => {
-    const query =  `https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${e.target.value}`;
-    const suggestion = document.querySelector(".suggestion")
-
-    const resp = await fetch(query);
-    const values = await resp.json();
-    console.log(values)
-
-    values.results.forEach(value => {
-        const li = document.createElement("li");
-        li.innerHTML = `
-            <div>
-                <img src=https://image.tmdb.org/t/p/w200/${value.poster_path} alt=${value.title}>
-            </div
-            <p>${value.title}</p>
-        `;
-
-        li.addEventListener("click", () => {
-            window.location.href = `./details.html?id=${value.id}`
-        })
-
-        suggestion.append(li)
-    })
-})

@@ -34,3 +34,39 @@ export function setLocalStorage(values) {
 export function getLocalStorage() {
     return JSON.parse(localStorage.getItem("watchlist")) || [];
 }
+
+export function searchFunction(key) {
+    const searchInput = document.getElementById("searchInput");
+    const suggestion = document.querySelector(".suggestion");
+
+    // document.addEventListener("click", (e) => {
+    //     if (!searchInput.contains(e.target)) {
+    //         suggestion.style.maxHeight = "0px"
+    //     }
+    // })
+
+    
+    searchInput.addEventListener("input", async (e) => {
+        const query =  `https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${e.target.value}`;
+
+        const resp = await fetch(query);
+        const values = await resp.json();
+        console.log(values)
+
+        values.results.forEach(value => {
+            const li = document.createElement("li");
+            li.innerHTML = `
+                <div>
+                    <img src=https://image.tmdb.org/t/p/w200/${value.poster_path} alt=${value.title}>
+                </div
+                <p>${value.title}</p>
+            `;
+
+            li.addEventListener("click", () => {
+                window.location.href = `./detail.html?id=${value.id}`
+            })
+
+            suggestion.append(li)
+        })
+    })
+}
